@@ -15,16 +15,16 @@
 export default {
   name: "TodoList",
   props: ["todos"],
-  methods:{
-      remove(index){
-          this.$emit('removeItem', index);
-      }
-  }
+  methods: {
+    remove(index) {
+      this.$emit("removeItem", index);
+    },
+  },
 };
 </script>
 <style scoped>
-ul{
-    margin:0 auto
+ul {
+  margin: 0 auto;
 }
 li {
   list-style: none;

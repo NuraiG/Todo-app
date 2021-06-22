@@ -29,8 +29,8 @@ export default {
     function removeItem(index) {
       console.log(todos.value);
       console.log(index);
-      const toRemove=todos.value.splice(index, 1);
-      console.log(toRemove)
+      const toRemove = todos.value.splice(index, 1);
+      console.log(toRemove);
     }
     return {
       userName,
@@ -47,7 +47,9 @@ export default {
   text-align: center;
   font-family: cursive;
   margin: 0 auto;
-  padding: 0;
+  padding: 18px;
   width: 60%;
+  border: 2px solid rgb(24, 90, 90);
+  border-radius: 6px;
 }
 </style>
