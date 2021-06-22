@@ -1,0 +1,51 @@
+<template>
+  <div>
+    <p v-if="todos.length === 0">I have nothing to do. Yeap, I am free</p>
+    <h2 v-else>My todo list:</h2>
+    <ul>
+      <li v-for="(todo, index) in todos" :key="index">
+        <span> {{ todo }}</span>
+        <button @click="remove(index)">Done</button>
+      </li>
+    </ul>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "TodoList",
+  props: ["todos"],
+  methods:{
+      remove(index){
+          this.$emit('removeItem', index);
+      }
+  }
+};
+</script>
+<style scoped>
+ul{
+    margin:0 auto
+}
+li {
+  list-style: none;
+  text-align: center;
+  color: rgb(24, 90, 90);
+  font-weight: bold;
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  border: 2px solid rgb(24, 90, 90);
+  margin: 5px;
+  padding: 6px;
+}
+button {
+  cursor: pointer;
+  background-color: rgb(24, 90, 90);
+  border: 1px solid #fff;
+  color: #fff;
+  font-weight: bold;
+  outline: none;
+  border-radius: 6px;
+  padding: 8px;
+}
+</style>
