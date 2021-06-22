@@ -12,7 +12,7 @@ export default {
   emits: ["add"],
   setup(_, context) {
     const newTodo = ref("");
-    
+
     function addTodo() {
       if (newTodo.value.trim()) {
         context.emit("add", newTodo.value);
@@ -35,12 +35,12 @@ export default {
 }
 input {
   background-color: transparent;
-  border: 2px solid rgba($color: white, $alpha: 0.35);
+  border: 2px solid gray;
   color: inherit;
 }
 button,
 input {
-  height: $48px;
+  height: 48px;
   box-shadow: none;
   outline: none;
   padding-left: 12px;

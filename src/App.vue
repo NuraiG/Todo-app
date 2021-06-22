@@ -2,7 +2,7 @@
   <my-title :title="userName"></my-title>
   <hr />
   <todo-form @add="addNewItem"></todo-form>
-  <todo-list :todos="mytodos" @removeItem="remove(index)"></todo-list>
+  <todo-list :todos="mytodos" @removeItem="remove"></todo-list>
 </template>
 
 <script>
@@ -27,7 +27,10 @@ export default {
       todos.value.unshift(value);
     }
     function removeItem(index) {
-      todos.value.splice(index, 1);
+      console.log(todos.value);
+      console.log(index);
+      const toRemove=todos.value.splice(index, 1);
+      console.log(toRemove)
     }
     return {
       userName,
