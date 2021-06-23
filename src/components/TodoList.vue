@@ -3,9 +3,15 @@
     <p v-if="todos.length === 0">I have nothing to do. Yeap, I am free</p>
     <h2 v-else>My todo list:</h2>
     <ul>
-      <li v-for="(todo, index) in todos" :key="todo + index">
-        <span> {{ todo }}</span>
-        <button @click="remove(index)">Done</button>
+      <li
+        v-for="(todo, index) in todos"
+        :key="todo + index"
+        @click.stop="done(todo)"
+      >
+        <span :class="{ done: todo.done }">
+          {{ todo.body }}</span
+        >
+        <button @click.stop="remove(index)">Remove</button>
       </li>
     </ul>
   </div>
@@ -18,6 +24,9 @@ export default {
   methods: {
     remove(index) {
       this.$emit("removeItem", index);
+    },
+    done(item) {
+      this.$emit("complete-task", item);
     },
   },
 };
@@ -47,5 +56,8 @@ button {
   outline: none;
   border-radius: 6px;
   padding: 8px;
+}
+ .done {
+  text-decoration: line-through;
 }
 </style>

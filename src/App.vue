@@ -2,7 +2,11 @@
   <my-title :title="userName"></my-title>
   <hr />
   <todo-form @add="addNewItem"></todo-form>
-  <todo-list :todos="mytodos" @removeItem="remove"></todo-list>
+  <todo-list
+    :todos="mytodos"
+    @removeItem="remove"
+    @complete-task="complete"
+  ></todo-list>
 </template>
 
 <script>
@@ -24,19 +28,20 @@ export default {
     const todos = ref([]);
 
     function addNewItem(value) {
-      todos.value.unshift(value);
+      todos.value.unshift({ body: value, done: false });
     }
     function removeItem(index) {
-      console.log(todos.value);
-      console.log(index);
-      const toRemove = todos.value.splice(index, 1);
-      console.log(toRemove);
+      todos.value.splice(index, 1);
+    }
+    function completeTask(item) {
+      item.done = !item.done;
     }
     return {
       userName,
       addNewItem,
       mytodos: todos,
       remove: removeItem,
+      complete: completeTask,
     };
   },
 };
