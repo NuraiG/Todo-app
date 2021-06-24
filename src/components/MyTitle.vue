@@ -1,5 +1,5 @@
 <template>
-  <h1>{{ title }}'s to do list</h1>
+  <h1>{{ title }} </h1>
 </template>
 
 <script>

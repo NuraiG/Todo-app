@@ -1,8 +1,13 @@
 <template>
-  <h3>Add a new todo item</h3>
-  <form @submit.prevent="addTodo" class="todoForm">
+  <button v-if="!isVisible" class="add" @click="showForm">
+    Add a new todo
+  </button>
+  <button v-if="isVisible" class="add" @click="showForm">
+    Hide form
+  </button>
+  <form v-if="isVisible" @submit.prevent="addTodo" class="todoForm">
     <input type="text" v-model.trim="input" />
-    <button>Add</button>
+    <button class="btn">Add</button>
   </form>
 </template>
 <script>
@@ -12,6 +17,7 @@ export default {
   emits: ["add"],
   setup(_, context) {
     const newTodo = ref("");
+    const isVisible = ref(false);
 
     function addTodo() {
       if (newTodo.value.trim()) {
@@ -20,10 +26,15 @@ export default {
       }
       return;
     }
+    function showForm() {
+      isVisible.value = !isVisible.value;
+    }
 
     return {
       input: newTodo,
       addTodo,
+      showForm,
+      isVisible,
     };
   },
 };
@@ -38,7 +49,7 @@ input {
   border: 2px solid gray;
   color: inherit;
 }
-button,
+button.btn,
 input {
   height: 48px;
   box-shadow: none;
@@ -50,21 +61,25 @@ input {
   margin-top: 6px;
   margin-bottom: 12px;
 }
-h3 {
-  padding: 15px;
+button.add {
+  padding: 24px;
   border: 3px solid rgb(24, 90, 90);
-  background-color: rgb(145 176 171);
+  background-color: rgb(24, 90, 90);
   border-radius: 6px;
   margin: 20px 100px;
+  cursor: pointer;
+  color: #fff;
+  font-weight: bold;
+  outline: none;
+  font-size: 1.2rem;
 }
-button:hover {
+button.btn:hover {
   background-color: rgb(24, 90, 90);
   border: 1px solid #fff;
   color: #fff;
 }
-button{
+button.btn {
   width: 100px;
   align-self: flex-end;
-
 }
 </style>
