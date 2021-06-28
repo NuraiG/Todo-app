@@ -48,6 +48,7 @@ export default {
     }
     function completeTask(item) {
       item.done = !item.done;
+      saveData();
     }
     return {
       userName,
@@ -80,5 +81,4 @@ html {
     rgba(0, 212, 255, 1) 100%
   );
 }
-
 </style>
