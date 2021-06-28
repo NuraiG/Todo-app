@@ -1,7 +1,7 @@
 <template>
   <div>
     <p v-if="todos.length === 0">I have nothing to do. Yeap, I am free</p>
-    <h2 v-else>My todo list:</h2>
+    <h2 v-else>My todos:</h2>
     <ul>
       <li
         v-for="(todo, index) in todos"
